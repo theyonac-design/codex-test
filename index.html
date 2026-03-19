@@ -1,71 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>案内ページ | とわこみゅ・十和田市まとめ</title>
-    <meta
-      name="description"
-      content="とわこみゅ機能拡張サービス紹介ページと、青森県十和田市の観光まとめページへの入口です。"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="案内ページ | とわこみゅ・十和田市まとめ" />
-    <meta
-      property="og:description"
-      content="2つのページ（とわこみゅLP／十和田市観光まとめ）へ移動できます。"
-    />
-    <meta property="og:url" content="https://example.com/index.html" />
-    <meta property="og:image" content="https://example.com/ogp-index.jpg" />
-    <link rel="stylesheet" href="./assets/styles.css" />
+    <title>とわだ彩りパズル</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="container site-header__inner">
-        <a class="brand" href="./index.html">ページ案内</a>
-        <nav aria-label="グローバルナビゲーション">
-          <ul class="nav-list">
-            <li><a href="./towakomyu.html">とわこみゅLPへ</a></li>
-            <li><a href="./towada.html">十和田市観光まとめへ</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <div class="app-shell">
+      <header class="hero">
+        <h1>とわだ彩りパズル</h1>
+        <p>
+          自然・食・アートのピースをつないで、十和田市の魅力を集めよう！
+        </p>
+      </header>
 
-    <main>
-      <div class="container">
-        <section class="hero" aria-labelledby="index-hero-title">
-          <h1 id="index-hero-title">2つの情報ページへようこそ</h1>
+      <main class="game-layout">
+        <section class="panel title-panel" id="titlePanel">
+          <h2>タイトル</h2>
           <p>
-            この入口ページから「とわこみゅ関連の機能拡張サービス紹介LP」と「青森県十和田市の観光まとめ（はじめて向け）」へ移動できます。
+            落ちてくる2つ組ピースをそろえて、3つ以上つながると消える落ち物パズルです。
           </p>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="./towakomyu.html">とわこみゅLPを見る</a>
-            <a class="btn btn-secondary" href="./towada.html">十和田市観光まとめを見る</a>
+          <ul>
+            <li>← →：移動</li>
+            <li>↑：回転　↓：高速落下</li>
+            <li>Space：一時停止</li>
+          </ul>
+          <button id="startButton" class="primary">ゲーム開始</button>
+        </section>
+
+        <section class="panel play-panel">
+          <div class="status-grid">
+            <div class="status-item"><span>スコア</span><strong id="score">0</strong></div>
+            <div class="status-item"><span>レベル</span><strong id="level">1</strong></div>
+            <div class="status-item"><span>連鎖</span><strong id="chain">0</strong></div>
+          </div>
+
+          <div class="board-wrap">
+            <canvas id="gameCanvas" width="320" height="560" aria-label="ゲーム盤面"></canvas>
+            <div id="overlayMessage" class="overlay hidden"></div>
+          </div>
+
+          <div class="control-row">
+            <button id="pauseButton">一時停止</button>
+            <button id="restartButton">リスタート</button>
           </div>
         </section>
 
-        <section class="section" aria-labelledby="index-links-title">
-          <h2 id="index-links-title">ページ一覧</h2>
-          <div class="grid grid--cards">
-            <article class="card">
-              <h3>towakomyu.html</h3>
-              <p>機能拡張サービスの概要、導入ステップ、FAQ、CTAを掲載したLPです。</p>
-              <a class="btn btn-primary" href="./towakomyu.html">移動する</a>
-            </article>
-            <article class="card">
-              <h3>towada.html</h3>
-              <p>はじめて十和田市を訪れる人に向けて、観光導線をまとめたガイドページです。</p>
-              <a class="btn btn-primary" href="./towada.html">移動する</a>
-            </article>
-          </div>
-        </section>
-      </div>
-    </main>
+        <aside class="panel side-panel">
+          <h2>次のピース</h2>
+          <canvas id="nextCanvas" width="150" height="150"></canvas>
 
-    <footer>
-      <div class="container">
-        <p>© 2026 案内ページ（仮）。</p>
-      </div>
-    </footer>
+          <h3>十和田スポット案内</h3>
+          <p id="spotMessage">まずはピースを消して観光情報を集めよう！</p>
+
+          <h3>ピースのカテゴリ</h3>
+          <ul class="legend" id="legend"></ul>
+        </aside>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>

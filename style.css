@@ -1,0 +1,186 @@
+:root {
+  --bg: #f4fbf8;
+  --panel: #ffffff;
+  --line: #d5e8df;
+  --text: #173436;
+  --accent: #1f8e7a;
+  --accent-2: #3ea7d8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #dff2ec 0%, var(--bg) 45%, #eef7ff 100%);
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.hero {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(120deg, #ffffffc4, #f0fbffde),
+    repeating-linear-gradient(45deg, #ffffff66 0 14px, #f6fffb66 14px 28px);
+  padding: 14px 18px;
+  box-shadow: 0 8px 24px #0d53480f;
+}
+
+.hero h1 {
+  margin: 0;
+  color: #126f78;
+}
+
+.hero p {
+  margin: 8px 0 0;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  padding: 14px;
+  box-shadow: 0 6px 20px #0d53480a;
+}
+
+.title-panel ul,
+.legend {
+  margin: 8px 0;
+  padding-left: 18px;
+}
+
+button {
+  border: none;
+  background: #dceff0;
+  color: #134143;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.status-item {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+  background: #f8fdfc;
+}
+
+.status-item span {
+  display: block;
+  font-size: 12px;
+}
+
+.status-item strong {
+  font-size: 20px;
+}
+
+.board-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  background: linear-gradient(180deg, #effaf8, #f4f8ff);
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+#gameCanvas,
+#nextCanvas {
+  background: radial-gradient(circle at top, #dff5ef, #c7e9f8);
+  border-radius: 10px;
+  border: 1px solid #bfded7;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 8px #00000088;
+  background: #0d4e5b80;
+  border-radius: 12px;
+  animation: pop 0.25s ease;
+  white-space: pre-line;
+}
+
+.hidden {
+  display: none;
+}
+
+.control-row {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+#spotMessage {
+  min-height: 3.6em;
+  line-height: 1.6;
+  background: #f6fbff;
+  border: 1px solid #d5e6f5;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.legend li {
+  margin-bottom: 4px;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 980px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .control-row {
+    justify-content: center;
+  }
+}
